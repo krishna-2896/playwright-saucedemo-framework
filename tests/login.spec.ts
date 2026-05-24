@@ -18,7 +18,9 @@ test.describe('Login Scenarios', () => {
     );
 
     await loginPage.verifyLoginSuccess();
+    await page.waitForTimeout(3000);
   });
+  
 
   test('Invalid Login', async ({ page }) => {
 
@@ -34,6 +36,7 @@ test.describe('Login Scenarios', () => {
     await loginPage.verifyErrorMessage(
       'Username and password do not match'
     );
+     await page.waitForTimeout(3000);
   });
 
   test('Locked User Login', async ({ page }) => {

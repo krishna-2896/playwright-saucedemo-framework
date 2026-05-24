@@ -28,8 +28,9 @@ export class LoginPage {
   }
 
   async verifyErrorMessage(text: string) {
-
     await expect(this.page.locator(this.errorMsg))
       .toContainText(text);
+    console.log("invalid credentials : ",text);
+      
   }
 }
