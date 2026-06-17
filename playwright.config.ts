@@ -38,6 +38,15 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
+
+      {name:'Smoke',
+        grep:/@smooke/,
+      },
+
+            {name:'Regression',
+        grep:/@regression/,
+      },
+
     {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },

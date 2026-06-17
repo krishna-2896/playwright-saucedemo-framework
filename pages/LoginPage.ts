@@ -4,10 +4,16 @@ export class LoginPage {
 
   constructor(private page: Page) {}
 
-  username = '#user-name';
-  password = '#password';
-  loginBtn = '#login-button';
-  errorMsg = '[data-test="error"]';
+  username =  () => this.page.getByPlaceholder('Username');
+  password =  () => this.page.getByPlaceholder('Password');
+  loginBtn =  () => this.page.getByRole('button', {name:'Login'});
+  errorMsg =  () => this.page.getByRole('heading', { level: 3 });
+
+
+  // #user-name';
+  // password = '#password';
+  // loginBtn = '#login-button';
+  // errorMsg = '[data-test="error"]';
 
   async navigate() {
     await this.page.goto('https://www.saucedemo.com/');
@@ -15,11 +21,11 @@ export class LoginPage {
 
   async login(username: string, password: string) {
 
-    await this.page.fill(this.username, username);
+    await this.username().fill( username);
+    await this.password().fill( password);
 
-    await this.page.fill(this.password, password);
 
-    await this.page.click(this.loginBtn);
+    await this.loginBtn().click();
   }
 
   async verifyLoginSuccess() {
@@ -28,7 +34,7 @@ export class LoginPage {
   }
 
   async verifyErrorMessage(text: string) {
-    await expect(this.page.locator(this.errorMsg))
+    await expect(this.errorMsg())
       .toContainText(text);
     console.log("invalid credentials : ",text);
       

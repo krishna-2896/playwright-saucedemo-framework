@@ -1,12 +1,10 @@
 import { test } from '@playwright/test';
 import { LoginPage} from '../pages/LoginPage';
-
-
 import { users } from '../utils/testData';
 
 test.describe('Login Scenarios', () => {
 
-  test('Valid Login', async ({ page }) => {
+  test('Valid Login @smoke', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
 
@@ -22,7 +20,7 @@ test.describe('Login Scenarios', () => {
   });
   
 
-  test('Invalid Login', async ({ page }) => {
+  test('Invalid Login ', async ({ page }) => {
 
     const loginPage = new LoginPage(page);
 
